@@ -1,0 +1,31 @@
+<%= form_for @poll, method: :post, url: poll_create_session_path do |f| %>
+	<%= f.label :Poll %><br>
+    <%= f.text_field :name %><br>
+Choices:
+	<ul>
+    <%= f.fields_for :choice do |choice_form| %>
+      <li>
+      	
+        <%= choice_form.label :Choice1 %><br>
+        <%= choice_form.text_field :name %><br>
+ 
+        <%= choice_form.label :Choice2 %><br>
+        <%= choice_form.text_field :name %><br>
+
+        <%= choice_form.label :Choice3 %><br>
+        <%= choice_form.text_field :name %><br>
+
+        <%= choice_form.label :Choice4 %><br>
+        <%= choice_form.text_field :name %><br>
+        
+      </li>
+    <% end %>
+  	</ul>
+  
+ <br><%= f.submit 'Create' %>
+
+
+<% end %>
+
+
+
