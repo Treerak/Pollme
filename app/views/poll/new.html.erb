@@ -9,14 +9,9 @@ Choices:
     <%= f.fields_for :choices do |choice_form| %>
       <li>
 
-        <%= choice_form.label :Choice1 %><br>
-        <%= choice_form.text_field :Cone %><br>  
+        <%= choice_form.label :Choice %><br>
+        <%= choice_form.text_field :name %><br>  
 
-        <%= choice_form.label :Choice2 %><br>
-        <%= choice_form.text_field :Ctwo %><br>
-
-        <%= choice_form.label :Choice3 %><br>
-        <%= choice_form.text_field :Cthree %><br> 
 
       </li>
     <% end %>

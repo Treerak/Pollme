@@ -13,7 +13,7 @@ class PollController < ApplicationController
 	def new
 
 		@poll = Poll.new
-  		2.times { @poll.choices.build }
+  		4.times { @poll.choices.build }
 		#poll = Poll.new( name: params[:poll] [:name] )
 		
 
@@ -52,25 +52,55 @@ class PollController < ApplicationController
 
 	#end
 
+	def vote
+		raise :test
+  		@poll = Poll.new(choice_params)
+		
+  	
+		if @poll.save
+			redirect_to poll_show_vote_path(@poll.id)
+		else
+			redirect_to poll_show_path	
+		end		
+		
+  	end
+
 	def create
 
-		#@poll = Poll.new
+		@poll = Poll.new(poll_params)
+		
   		#4.times { @poll.choice.build }
   		#puts params.to_h
 		#poll = Poll.new(name: params[:poll][:name])
 		#poll.choices = params[:poll][:choices]
 		 
-		poll = params.require(:poll).permit(:name,:Cone, :Ctwo, :Cthree)
+
+		#poll = params.require(:poll).permit(:name,:Cone, :Ctwo, :Cthree,:Cfour )
 		 #choices_attributes: [:id,:Cone, :Ctwo, :Cthree])
 		#poll.choices = params[:poll][:choices]
 
-		if poll.save
-			redirect_to poll_show_path(poll.id)
+		if @poll.save
+			redirect_to poll_show_path(@poll.id)
 		else
 			redirect_to poll_new_path	
 		end
 	end
 
+	private
+
+  	def poll_params
+    	params.require(:poll).permit(:name, choices_attributes: [:name])
+  	end
+
+  	def choice_params
+    	params.require(:choice).permit(:name, choices_attributes: [:name])
+  	end
+
+  	
+
+  	def show_vote
+		@poll = Poll.find(params[:id])
+	end
 
 
 end
