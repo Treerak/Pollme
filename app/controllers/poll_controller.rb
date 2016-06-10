@@ -53,9 +53,10 @@ class PollController < ApplicationController
 	#end
 
 	def vote
-		raise :test
-  		@poll = Poll.new(choice_params)
-		
+		puts "XXXXX" + params.to_s
+  		#@poll = Poll.new(choice_params)
+		@poll = Poll.find(params[:id])
+		@poll.selected_choice_id = params[:radio]
   	
 		if @poll.save
 			redirect_to poll_show_vote_path(@poll.id)
@@ -85,6 +86,10 @@ class PollController < ApplicationController
 			redirect_to poll_new_path	
 		end
 	end
+	
+  	def show_vote
+		@poll = Poll.find(params[:id])
+	end
 
 	private
 
@@ -98,9 +103,6 @@ class PollController < ApplicationController
 
   	
 
-  	def show_vote
-		@poll = Poll.find(params[:id])
-	end
 
 
 end

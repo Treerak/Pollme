@@ -16285,3 +16285,884 @@ TypeError (exception class/object expected):
   Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
   Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
   Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (33.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-09 10:45:34 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/lib/ruby/vendor_ruby/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 20ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (81.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (76.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePolls (20160606122423)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /home/treerak/Poll/db/migrate/20160606122423_create_polls.rb:7)
+  [1m[35m (0.7ms)[0m  CREATE TABLE "polls" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160606122423"]]
+  [1m[35m (76.5ms)[0m  commit transaction
+Migrating to CreateChoices (20160606122455)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "choices" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "vote" integer, "poll_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160606122455"]]
+  [1m[35m (95.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 10:51:14 +0700
+Processing by PollController#index as HTML
+  Rendered poll/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 341ms (Views: 327.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/poll/new?utf8=%E2%9C%93&commit=Create+Poll" for 127.0.0.1 at 2016-06-09 10:51:41 +0700
+Processing by PollController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create Poll"}
+  Rendered poll/new.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 63ms (Views: 36.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (78.5ms)[0m  [1mCREATE TABLE "choices" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "vote" integer, "poll_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (88.1ms)[0m  CREATE TABLE "polls" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (103.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (76.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (55.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160606122455')[0m
+  [1m[35m (54.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160606122423')
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-09 13:29:02 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/lib/ruby/vendor_ruby/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 13:29:11 +0700
+Processing by PollController#index as HTML
+  Rendered poll/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 89ms (Views: 88.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/poll/new?utf8=%E2%9C%93&commit=Create+Poll" for 127.0.0.1 at 2016-06-09 13:29:14 +0700
+Processing by PollController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create Poll"}
+  Rendered poll/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/poll/new?utf8=%E2%9C%93&commit=Create+Poll" for 127.0.0.1 at 2016-06-09 13:57:59 +0700
+Processing by PollController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create Poll"}
+  Rendered poll/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 41ms (Views: 21.9ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/poll/create" for 127.0.0.1 at 2016-06-09 13:58:10 +0700
+Processing by PollController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pp5H+SdjAha4kj4O4yYMh7qo9I7Ax4LVIlNF7OD7VGGvibR4sxATLCNFMwO4ltC5VT84tDRt6oXuOs+qqf8rBw==", "poll"=>{"name"=>"12345", "choices_attributes"=>{"0"=>{"name"=>"1"}, "1"=>{"name"=>"2"}, "2"=>{"name"=>"3"}, "3"=>{"name"=>"4"}}}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "polls" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "12345"], ["created_at", "2016-06-09 06:58:10.504334"], ["updated_at", "2016-06-09 06:58:10.504334"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "1"], ["poll_id", 46], ["created_at", "2016-06-09 06:58:10.508634"], ["updated_at", "2016-06-09 06:58:10.508634"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2"], ["poll_id", 46], ["created_at", "2016-06-09 06:58:10.510845"], ["updated_at", "2016-06-09 06:58:10.510845"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "3"], ["poll_id", 46], ["created_at", "2016-06-09 06:58:10.513524"], ["updated_at", "2016-06-09 06:58:10.513524"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "4"], ["poll_id", 46], ["created_at", "2016-06-09 06:58:10.514898"], ["updated_at", "2016-06-09 06:58:10.514898"]]
+  [1m[35m (96.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/poll/show46
+Completed 302 Found in 113ms (ActiveRecord: 97.5ms)
+
+
+Started GET "/poll/show46" for 127.0.0.1 at 2016-06-09 13:58:10 +0700
+Processing by PollController#show as HTML
+  Parameters: {"id"=>"46"}
+  [1m[36mPoll Load (0.2ms)[0m  [1mSELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1[0m  [["id", 46]]
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."poll_id" = ?  [["poll_id", 46]]
+  Rendered poll/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 25ms (Views: 18.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/poll/vote" for 127.0.0.1 at 2016-06-09 13:58:12 +0700
+Processing by PollController#vote as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ltBSC57g71f8naxbrXWN8OJDXkPhGF4leNwvFPdV/zifx6GKCpP+bWdKoVb2xVHODdSSeRWyNnW0taVSvlGAXg==", "radio"=>"63", "commit"=>"Vote"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: choice):
+  app/controllers/poll_controller.rb:95:in `choice_params'
+  app/controllers/poll_controller.rb:56:in `vote'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (6.8ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (25.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (20.9ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (44.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddSelectedChoiceIdToPolls (20160609071018)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "polls" ADD "selected_choice_id" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160609071018"]]
+  [1m[36m (57.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:35:59 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:27:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/reloader.rb:73:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:38:in `call_app'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/engine.rb:518:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.8ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (38.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:36:19 +0700
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:27:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/reloader.rb:73:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:38:in `call_app'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/engine.rb:518:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (4.1ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (21.7ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (44.2ms)
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:37:12 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:27:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/reloader.rb:73:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:38:in `call_app'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/engine.rb:518:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.9ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (37.8ms)
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:37:23 +0700
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:27:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/reloader.rb:73:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:38:in `call_app'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/engine.rb:518:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (3.2ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.2ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (18.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (36.9ms)
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:39:13 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:27:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/reloader.rb:73:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:38:in `call_app'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/engine.rb:518:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.9ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.8ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (37.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (82.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (99.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePolls (20160606122423)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /home/treerak/Poll/db/migrate/20160606122423_create_polls.rb:7)
+  [1m[35m (0.8ms)[0m  CREATE TABLE "polls" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160606122423"]]
+  [1m[35m (105.7ms)[0m  commit transaction
+Migrating to CreateChoices (20160606122455)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "choices" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "vote" integer, "poll_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160606122455"]]
+  [1m[35m (74.4ms)[0m  commit transaction
+Migrating to AddSelectedChoiceIdToPolls (20160609071018)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "polls" ADD "selected_choice_id" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160609071018"]]
+  [1m[35m (48.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:41:09 +0700
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:27:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/reloader.rb:73:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:38:in `call_app'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/engine.rb:518:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (23.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.9ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (37.5ms)
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:42:49 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/callbacks.rb:27:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/reloader.rb:73:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:38:in `call_app'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  /usr/lib/ruby/vendor_ruby/rails/rack/logger.rb:20:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/engine.rb:518:in `call'
+  /usr/lib/ruby/vendor_ruby/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (3.4ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.9ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (39.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:44:14 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PollController#index as HTML
+  Rendered poll/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 311ms (Views: 288.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/poll.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-09 14:44:15 +0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-09 14:44:15 +0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-06-09 14:44:15 +0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-09 14:44:15 +0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-06-09 14:44:15 +0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-06-09 14:44:15 +0700
+
+
+Started GET "/assets/poll.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-09 14:44:15 +0700
+
+
+Started GET "/poll/new?utf8=%E2%9C%93&commit=Create+Poll" for 127.0.0.1 at 2016-06-09 14:44:18 +0700
+Processing by PollController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create Poll"}
+  Rendered poll/new.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 62ms (Views: 34.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/poll/create" for 127.0.0.1 at 2016-06-09 14:44:29 +0700
+Processing by PollController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xcn+4caUhEI0OMGePEoOL4YlG9JPONm1J/eMBuIS9AzM3g1gUueVeK/vzJNn+tIRabLX6LuSseXrngZAqxaLag==", "poll"=>{"name"=>"12345", "choices_attributes"=>{"0"=>{"name"=>"1"}, "1"=>{"name"=>"2"}, "2"=>{"name"=>"3"}, "3"=>{"name"=>"5666"}}}, "commit"=>"Create"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "polls" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "12345"], ["created_at", "2016-06-09 07:44:29.952578"], ["updated_at", "2016-06-09 07:44:29.952578"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "1"], ["poll_id", 1], ["created_at", "2016-06-09 07:44:29.959677"], ["updated_at", "2016-06-09 07:44:29.959677"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "2"], ["poll_id", 1], ["created_at", "2016-06-09 07:44:29.962126"], ["updated_at", "2016-06-09 07:44:29.962126"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "3"], ["poll_id", 1], ["created_at", "2016-06-09 07:44:29.964117"], ["updated_at", "2016-06-09 07:44:29.964117"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "5666"], ["poll_id", 1], ["created_at", "2016-06-09 07:44:29.966445"], ["updated_at", "2016-06-09 07:44:29.966445"]]
+  [1m[35m (142.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/poll/show/1
+Completed 302 Found in 165ms (ActiveRecord: 143.7ms)
+
+
+Started GET "/poll/show/1" for 127.0.0.1 at 2016-06-09 14:44:30 +0700
+Processing by PollController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPoll Load (0.3ms)[0m  [1mSELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mChoice Load (0.2ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."poll_id" = ?  [["poll_id", 1]]
+  Rendered poll/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 29ms (Views: 20.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/poll/vote" for 127.0.0.1 at 2016-06-09 14:44:33 +0700
+Processing by PollController#vote as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hBlL7l2XB86jKEpi/MGt/OitldDUO1boGbhwvE2g7SuNDrhvyeQW9Dj/R2+ncXHCBzpZ6iCRPrjV0fr6BKSSTQ==", "id"=>"1", "radio"=>"4", "commit"=>"Vote"}
+  [1m[36mPoll Load (0.2ms)[0m  [1mSELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "polls" SET "selected_choice_id" = ?, "updated_at" = ? WHERE "polls"."id" = ?[0m  [["selected_choice_id", 4], ["updated_at", "2016-06-09 07:44:33.180992"], ["id", 1]]
+  [1m[35m (94.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/poll/show_vote/1
+Completed 302 Found in 102ms (ActiveRecord: 95.0ms)
+
+
+Started GET "/poll/show_vote/1" for 127.0.0.1 at 2016-06-09 14:44:33 +0700
+Processing by PollController#show_vote as HTML
+  Parameters: {"id"=>"1"}
+  Rendered poll/show_vote.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.0ms)
+  [1m[36mPoll Load (0.2ms)[0m  [1mSELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1[0m
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:46:00 +0700
+Processing by PollController#index as HTML
+  Rendered poll/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 24ms (Views: 23.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/poll/new?utf8=%E2%9C%93&commit=Create+Poll" for 127.0.0.1 at 2016-06-09 14:46:02 +0700
+Processing by PollController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create Poll"}
+  Rendered poll/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 24ms (Views: 21.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/poll/create" for 127.0.0.1 at 2016-06-09 14:46:12 +0700
+Processing by PollController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FfJLCPOkppvelGA5kh5iohYK4AI5dXM8rglH8Tsz8rgc5biJZ9e3oUVDbTTJrr6c+Z0sOM3fG2xiYM23cjeN3g==", "poll"=>{"name"=>"55", "choices_attributes"=>{"0"=>{"name"=>"3"}, "1"=>{"name"=>"4"}, "2"=>{"name"=>"5"}, "3"=>{"name"=>"6"}}}, "commit"=>"Create"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "polls" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "55"], ["created_at", "2016-06-09 07:46:12.547417"], ["updated_at", "2016-06-09 07:46:12.547417"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "3"], ["poll_id", 2], ["created_at", "2016-06-09 07:46:12.549415"], ["updated_at", "2016-06-09 07:46:12.549415"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "4"], ["poll_id", 2], ["created_at", "2016-06-09 07:46:12.551679"], ["updated_at", "2016-06-09 07:46:12.551679"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "5"], ["poll_id", 2], ["created_at", "2016-06-09 07:46:12.553613"], ["updated_at", "2016-06-09 07:46:12.553613"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "6"], ["poll_id", 2], ["created_at", "2016-06-09 07:46:12.555423"], ["updated_at", "2016-06-09 07:46:12.555423"]]
+  [1m[36m (145.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/poll/show/2
+Completed 302 Found in 162ms (ActiveRecord: 146.7ms)
+
+
+Started GET "/poll/show/2" for 127.0.0.1 at 2016-06-09 14:46:12 +0700
+Processing by PollController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPoll Load (0.2ms)[0m  SELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mChoice Load (0.1ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."poll_id" = ?[0m  [["poll_id", 2]]
+  Rendered poll/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/poll/vote" for 127.0.0.1 at 2016-06-09 14:46:15 +0700
+Processing by PollController#vote as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/0i1iLzfndJI1LZIWDxGilthTQtNQng6Ka+ImIhPbX72X0YJKKyM6NMDu0UDjJq0tPaBMbnoEGrlxgLewUsSGA==", "id"=>"2", "radio"=>"5", "commit"=>"Vote"}
+  [1m[35mPoll Load (0.1ms)[0m  SELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "polls" SET "selected_choice_id" = ?, "updated_at" = ? WHERE "polls"."id" = ?  [["selected_choice_id", 5], ["updated_at", "2016-06-09 07:46:15.669867"], ["id", 2]]
+  [1m[36m (147.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/poll/show_vote/2
+Completed 302 Found in 152ms (ActiveRecord: 148.4ms)
+
+
+Started GET "/poll/show_vote/2" for 127.0.0.1 at 2016-06-09 14:46:15 +0700
+Processing by PollController#show_vote as HTML
+  Parameters: {"id"=>"2"}
+  Rendered poll/show_vote.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 19ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+  [1m[35mPoll Load (0.4ms)[0m  SELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 14:52:41 +0700
+Processing by PollController#index as HTML
+  Rendered poll/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 58ms (Views: 22.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/poll/new?utf8=%E2%9C%93&commit=Create+Poll" for 127.0.0.1 at 2016-06-09 14:52:43 +0700
+Processing by PollController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create Poll"}
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `build' for nil:NilClass):
+  app/controllers/poll_controller.rb:16:in `block in new'
+  app/controllers/poll_controller.rb:16:in `times'
+  app/controllers/poll_controller.rb:16:in `new'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (25.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.5ms)
+  [1m[36mPoll Load (0.4ms)[0m  [1mSELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1[0m
+  [1m[36mPoll Load (0.3ms)[0m  [1mSELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1[0m
+  [1m[35mPoll Load (0.5ms)[0m  SELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1
+  [1m[36mPoll Load (0.2ms)[0m  [1mSELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1[0m
+  [1m[36mPoll Load (0.2ms)[0m  [1mSELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1[0m
+  [1m[35mChoice Load (0.3ms)[0m  SELECT  "choices".* FROM "choices" WHERE "choices"."id" = ? LIMIT 1  [["id", 5]]
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 15:10:08 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PollController#index as HTML
+  Rendered poll/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 345ms (Views: 320.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/poll/new?utf8=%E2%9C%93&commit=Create+Poll" for 127.0.0.1 at 2016-06-09 15:10:10 +0700
+Processing by PollController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create Poll"}
+  Rendered poll/new.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 75ms (Views: 33.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/poll/create" for 127.0.0.1 at 2016-06-09 15:10:27 +0700
+Processing by PollController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oSba5aigTOTtSNH94SK6mhSpqglY9t9di3AnUgbA7gKoMSlkPNNd3naf3PC6kmak+z5mM6xctw1HGa0UT8SRZA==", "poll"=>{"name"=>"333", "choices_attributes"=>{"0"=>{"name"=>"5"}, "1"=>{"name"=>"6"}, "2"=>{"name"=>"7"}, "3"=>{"name"=>"8"}}}, "commit"=>"Create"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "polls" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "333"], ["created_at", "2016-06-09 08:10:27.504636"], ["updated_at", "2016-06-09 08:10:27.504636"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "5"], ["poll_id", 3], ["created_at", "2016-06-09 08:10:27.512855"], ["updated_at", "2016-06-09 08:10:27.512855"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "6"], ["poll_id", 3], ["created_at", "2016-06-09 08:10:27.515117"], ["updated_at", "2016-06-09 08:10:27.515117"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "7"], ["poll_id", 3], ["created_at", "2016-06-09 08:10:27.516900"], ["updated_at", "2016-06-09 08:10:27.516900"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "8"], ["poll_id", 3], ["created_at", "2016-06-09 08:10:27.518594"], ["updated_at", "2016-06-09 08:10:27.518594"]]
+  [1m[35m (135.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/poll/show/3
+Completed 302 Found in 159ms (ActiveRecord: 136.8ms)
+
+
+Started GET "/poll/show/3" for 127.0.0.1 at 2016-06-09 15:10:27 +0700
+Processing by PollController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPoll Load (0.2ms)[0m  [1mSELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mChoice Load (0.3ms)[0m  SELECT "choices".* FROM "choices" WHERE "choices"."poll_id" = ?  [["poll_id", 3]]
+  Rendered poll/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 32ms (Views: 24.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/poll/vote" for 127.0.0.1 at 2016-06-09 15:10:38 +0700
+Processing by PollController#vote as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MCIRrKnYExnSsc/bzPmQedrX5iuyhsDRiHyiBJ8kIZw5NeItPasCI0lmwtaXSUxHNUAqEUYsqIFEFShC1iBe+g==", "id"=>"3", "radio"=>"11", "commit"=>"Vote"}
+  [1m[36mPoll Load (0.2ms)[0m  [1mSELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "polls" SET "selected_choice_id" = ?, "updated_at" = ? WHERE "polls"."id" = ?[0m  [["selected_choice_id", 11], ["updated_at", "2016-06-09 08:10:38.875635"], ["id", 3]]
+  [1m[35m (68.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/poll/show_vote/3
+Completed 302 Found in 76ms (ActiveRecord: 68.8ms)
+
+
+Started GET "/poll/show_vote/3" for 127.0.0.1 at 2016-06-09 15:10:38 +0700
+Processing by PollController#show_vote as HTML
+  Parameters: {"id"=>"3"}
+  Rendered poll/show_vote.html.erb within layouts/application (7.1ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <!-- <b>Poll : </b><%= @poll.name %><br>
+    2: <b>Choice : </b><%= @poll.vote %><br> -->
+  app/views/poll/show_vote.html.erb:1:in `_app_views_poll_show_vote_html_erb__1174548996073984364_70156296387440'
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (8.5ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (19.7ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /var/lib/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (43.3ms)
+
+
+Started GET "/poll/index" for 127.0.0.1 at 2016-06-09 15:13:22 +0700
+Processing by PollController#index as HTML
+  Rendered poll/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 35ms (Views: 24.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/poll/new?utf8=%E2%9C%93&commit=Create+Poll" for 127.0.0.1 at 2016-06-09 15:13:34 +0700
+Processing by PollController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create Poll"}
+  Rendered poll/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 33ms (Views: 21.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/poll/create" for 127.0.0.1 at 2016-06-09 15:13:52 +0700
+Processing by PollController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z5dfvm2nk8yfINiXXwSGxWZLWQAyvnuBpxq+BREtoyxugKw/+dSC9gT31ZoEtFr7idyVOsYUE9FrczRDWCncSg==", "poll"=>{"name"=>"111", "choices_attributes"=>{"0"=>{"name"=>"7"}, "1"=>{"name"=>"8"}, "2"=>{"name"=>"9"}, "3"=>{"name"=>"0"}}}, "commit"=>"Create"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "polls" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "111"], ["created_at", "2016-06-09 08:13:52.805373"], ["updated_at", "2016-06-09 08:13:52.805373"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "7"], ["poll_id", 4], ["created_at", "2016-06-09 08:13:52.807758"], ["updated_at", "2016-06-09 08:13:52.807758"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "8"], ["poll_id", 4], ["created_at", "2016-06-09 08:13:52.810549"], ["updated_at", "2016-06-09 08:13:52.810549"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "9"], ["poll_id", 4], ["created_at", "2016-06-09 08:13:52.813412"], ["updated_at", "2016-06-09 08:13:52.813412"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "choices" ("name", "poll_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "0"], ["poll_id", 4], ["created_at", "2016-06-09 08:13:52.815345"], ["updated_at", "2016-06-09 08:13:52.815345"]]
+  [1m[36m (162.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/poll/show/4
+Completed 302 Found in 181ms (ActiveRecord: 164.1ms)
+
+
+Started GET "/poll/show/4" for 127.0.0.1 at 2016-06-09 15:13:53 +0700
+Processing by PollController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPoll Load (0.2ms)[0m  SELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mChoice Load (0.2ms)[0m  [1mSELECT "choices".* FROM "choices" WHERE "choices"."poll_id" = ?[0m  [["poll_id", 4]]
+  Rendered poll/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/poll/vote" for 127.0.0.1 at 2016-06-09 15:13:55 +0700
+Processing by PollController#vote as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wesbhirVLbx+kECizUHMriHYwxYXuJAXDZeW1lU2UhvI/OgHvqY8huVHTa+W8RCQzk8PLOMS+EfB/hyQHDItfQ==", "id"=>"4", "radio"=>"16", "commit"=>"Vote"}
+  [1m[35mPoll Load (0.2ms)[0m  SELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "polls" SET "selected_choice_id" = ?, "updated_at" = ? WHERE "polls"."id" = ?  [["selected_choice_id", 16], ["updated_at", "2016-06-09 08:13:55.716276"], ["id", 4]]
+  [1m[36m (53.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/poll/show_vote/4
+Completed 302 Found in 58ms (ActiveRecord: 53.9ms)
+
+
+Started GET "/poll/show_vote/4" for 127.0.0.1 at 2016-06-09 15:13:55 +0700
+Processing by PollController#show_vote as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPoll Load (0.1ms)[0m  SELECT  "polls".* FROM "polls" WHERE "polls"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mChoice Load (0.3ms)[0m  [1mSELECT  "choices".* FROM "choices" WHERE "choices"."id" = ? LIMIT 1[0m  [["id", 16]]
+  Rendered poll/show_vote.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 25ms (Views: 23.3ms | ActiveRecord: 0.4ms)
+  [1m[36mPoll Load (0.5ms)[0m  [1mSELECT  "polls".* FROM "polls"  ORDER BY "polls"."id" DESC LIMIT 1[0m
+  [1m[35mChoice Load (0.2ms)[0m  SELECT  "choices".* FROM "choices" WHERE "choices"."id" = ? LIMIT 1  [["id", 16]]

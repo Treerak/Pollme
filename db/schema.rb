@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606122455) do
+ActiveRecord::Schema.define(version: 20160609071018) do
 
   create_table "choices", force: :cascade do |t|
     t.string   "name"
@@ -23,10 +23,9 @@ ActiveRecord::Schema.define(version: 20160606122455) do
 
   create_table "polls", force: :cascade do |t|
     t.string   "name"
-    t.integer  "vote"
-    t.integer  "poll_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "selected_choice_id"
   end
 
 end
