@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw d
 
+  root 'poll#index'
   post '/poll/create' , to: 'poll#create', as: 'poll_create'
   get '/poll/new', to:'poll#new', as: 'poll_new'
   get '/poll/show/:id', to:'poll#show', as: 'poll_show'
