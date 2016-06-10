@@ -1,4 +1,4 @@
-Rails.application.routes.draw d
+Rails.application.routes.draw do
 
   root 'poll#index'
   post '/poll/create' , to: 'poll#create', as: 'poll_create'
